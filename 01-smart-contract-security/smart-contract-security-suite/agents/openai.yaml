@@ -1,0 +1,4 @@
+interface:
+  display_name: "Smart Contract Security Suite"
+  short_description: "Codex-ready Trail of Bits style smart contract security workbench"
+  default_prompt: "Use $smart-contract-security-suite to review this smart contract project and choose the right audit, hardening, or token-integration workflow."

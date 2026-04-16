@@ -1,0 +1,4 @@
+interface:
+  display_name: "Smart Contract Entry Points"
+  short_description: "Map state-changing smart contract entry points and privilege levels"
+  default_prompt: "Use $smart-contract-entry-points to identify all state-changing entry points and classify access control in this smart contract codebase."

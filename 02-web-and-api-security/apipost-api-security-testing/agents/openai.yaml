@@ -1,0 +1,4 @@
+interface:
+  display_name: "APIPost API Security Testing"
+  short_description: "Grounded APIPost workflows for authorized API security tests"
+  default_prompt: "Use $apipost-api-security-testing to plan and execute authorized API security testing with APIPost, using only documented APIPost capabilities."
