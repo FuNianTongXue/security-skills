@@ -1,0 +1,4 @@
+interface:
+  display_name: "Yakit Vuln Retest Screenshots"
+  short_description: "Retest vulns in Yakit and capture proof screenshots"
+  default_prompt: "Use $yakit-vuln-retest-screenshots to retest an authorized vulnerability in Yakit, verify each success condition, and save ordered screenshot evidence to the Desktop."

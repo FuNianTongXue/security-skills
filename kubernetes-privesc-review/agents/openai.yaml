@@ -1,0 +1,4 @@
+interface:
+  display_name: "K8s 提权审计"
+  short_description: "ServiceAccount、节点与控制面暴露导致的 K8s 提权路径评估"
+  default_prompt: "Use $kubernetes-privesc-review to assess this Pod, node, or exposed Kubernetes component for privilege-escalation risk using safe validation and evidence collection."

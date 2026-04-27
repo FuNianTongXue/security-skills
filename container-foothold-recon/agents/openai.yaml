@@ -1,0 +1,4 @@
+interface:
+  display_name: "容器落点侦察"
+  short_description: "容器或 Pod shell 的低干扰信息收集与环境判定"
+  default_prompt: "Use $container-foothold-recon to classify this container or Pod foothold, summarize what privileges are already present, and identify the safest next validation path."

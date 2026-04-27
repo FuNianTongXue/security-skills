@@ -1,0 +1,4 @@
+interface:
+  display_name: "容器逃逸面审计"
+  short_description: "面向容器与 Pod 配置的宿主机暴露与逃逸风险评估"
+  default_prompt: "Use $container-escape-review to assess this container, Pod spec, or runtime setup for container escape and node-impact risk using safe validation steps."

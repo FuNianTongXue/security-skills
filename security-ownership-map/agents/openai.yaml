@@ -1,0 +1,6 @@
+interface:
+  display_name: "安全归属图谱"
+  short_description: "维护者归属、Bus Factor 与敏感代码归属分析"
+  icon_small: "./assets/logo.svg"
+  icon_large: "./assets/logo.svg"
+  default_prompt: "Build a security ownership map for this repository and identify bus-factor risks in sensitive code."
