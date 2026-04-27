@@ -16,7 +16,7 @@
 ## Suggested repository metadata
 
 - Repository name: `shayshen-security-skills`
-- Short description: `A categorized bundle of custom Codex security skills for smart contracts, web/API testing, privacy compliance, and security engineering workflows.`
+- Short description: `A categorized bundle of Codex security skills for smart contracts, web/API testing, privacy compliance, containers, Kubernetes, and security engineering workflows.`
 - Topics:
   - `codex`
   - `skills`
@@ -24,6 +24,8 @@
   - `smart-contract-security`
   - `api-security`
   - `privacy-compliance`
+  - `kubernetes-security`
+  - `container-security`
   - `web3`
 
 ## Recommended first commit layout

@@ -1,61 +1,129 @@
 # Shayshen Security Skills
 
-一个面向 Codex 的安全类自定义 skills 仓库整理包，按安全领域做了分层，适合直接作为 GitHub 仓库上传和维护。
+A categorized bundle of Codex security skills for people who need evidence, repeatability, and sane boundaries.
 
-## 目录结构
+这个仓库整理了一组面向 Codex 的安全类自定义 skills。它不是“提示词合集”，更像是一套可复用的安全工作流：先确认授权和范围，再收集证据，最后把结论写成别人能复核的报告。
+
+## Why Star This
+
+Most security prompts fail because they rush from a vague goal to a powerful tool. These skills try to fix that habit.
+
+- Scope-first workflows for audits, retests, compliance checks, and security engineering reviews.
+- Evidence language that separates `confirmed-risk`, `inconclusive`, `not-observed`, and `not-tested`.
+- Helper scripts for repeatable collection instead of one-off command memory.
+- Guardrails against fake compliance claims, forged screenshots, unauthorized scanning, and unsupported tool features.
+- Coverage across smart contracts, web/API testing, privacy compliance, container/Kubernetes review, and security governance.
+
+If you use Codex for real security work, this repository gives you starting points that already care about evidence quality.
+
+## Skills Index
+
+| Category | Skill | Best for |
+| --- | --- | --- |
+| Smart Contract Security | `smart-contract-entry-points` | Mapping state-changing entry points, permissions, and audit attack surface |
+| Smart Contract Security | `smart-contract-security-suite` | Audit prep, secure workflow guidance, upgrade review, and vulnerability pattern triage |
+| Smart Contract Security | `web3-security-pm` | Web3 security product planning, specs, and delivery workflows |
+| Web and API Security | `apipost-api-security-testing` | Authorized APIPost API security cases, assertions, and evidence collection |
+| Web and API Security | `exploit-focused-code-audit` | Reachable high-impact code audit from an attacker-with-low-privilege perspective |
+| Web and API Security | `pentest-automation-safe` | Scope-gated external inventory and baseline scanning without brute force or exploitation |
+| Web and API Security | `yakit-vuln-retest-screenshots` | Authorized vulnerability retesting in Yakit with reproducible screenshot evidence |
+| Privacy and Compliance | `android-privacy-compliance-audit` | Android APK privacy review against GB/T 41391-2022 and GB/T 35273-2020 |
+| Security Engineering and Governance | `security-best-practices` | Python, JavaScript/TypeScript, and Go secure-by-default guidance |
+| Security Engineering and Governance | `security-ownership-map` | Git-history based sensitive-code ownership, bus factor, and maintainer analysis |
+| Container and Kubernetes Security | `container-escape-review` | Container, Pod, and runtime escape-risk review |
+| Container and Kubernetes Security | `container-foothold-recon` | Authorized shell triage inside Linux containers or Kubernetes Pods |
+| Container and Kubernetes Security | `kubernetes-privesc-review` | ServiceAccount overreach, kubelet/control-plane exposure, and node-to-cluster risk |
+
+See [docs/skills-index.md](docs/skills-index.md) for the compact directory index.
+
+## Repository Layout
 
 ```text
-shayshen-security-skills/
+security-skills/
 ├── 01-smart-contract-security/
 ├── 02-web-and-api-security/
 ├── 03-privacy-and-compliance/
 ├── 04-security-engineering-and-governance/
+├── 05-container-and-kubernetes-security/
 ├── docs/
-├── .gitignore
 ├── NOTICE.md
 └── PUBLISH_CHECKLIST.md
 ```
 
-## Skills Index
+## Install
 
-| Category | Skill | Purpose |
-|---|---|---|
-| Smart Contract Security | `smart-contract-entry-points` | 梳理状态变更入口点、权限面和审计攻击面 |
-| Smart Contract Security | `smart-contract-security-suite` | 智能合约安全工作台，整合审计准备、升级、测试、漏洞模式等分析 |
-| Smart Contract Security | `web3-security-pm` | Web3 安全产品与交付规划类 workflow |
-| Web and API Security | `apipost-api-security-testing` | 用 APIPost 做授权 API 安全测试和证据整理 |
-| Web and API Security | `exploit-focused-code-audit` | 从低权限外部攻击者视角做高可利用性代码审计 |
-| Web and API Security | `pentest-automation-safe` | 授权范围内的自动化渗透流程能力 |
-| Web and API Security | `yakit-vuln-retest-screenshots` | 用 Yakit 复测漏洞并沉淀截图证据 |
-| Privacy and Compliance | `android-privacy-compliance-audit` | Android 隐私合规与静态检测工作流 |
-| Security Engineering and Governance | `security-best-practices` | 安全最佳实践评审与加固建议 |
-| Security Engineering and Governance | `security-ownership-map` | 基于 Git 历史做安全归属和 bus-factor 分析 |
+Clone the repository:
 
-## 使用方式
+```bash
+git clone https://github.com/FuNianTongXue/security-skills.git
+```
 
-每个 skill 目录都保留了 `SKILL.md` 和它自己的配套文件。你可以：
+Install one skill by copying its directory into Codex:
 
-1. 直接浏览单个目录并维护内容。
-2. 把某个 skill 目录复制到 Codex 的 `~/.codex/skills/`。
-3. 从这个仓库中按路径挑选某个 skill 单独复用。
+```bash
+mkdir -p ~/.codex/skills
+cp -R security-skills/05-container-and-kubernetes-security/container-escape-review ~/.codex/skills/
+```
 
-## 命名规范
+Install a whole category:
 
-- 仓库名使用小写加连字符：`shayshen-security-skills`
-- 一级目录按领域分组，并使用数字前缀保持顺序稳定
-- skill 目录保留原始 skill 名，避免后续触发词和引用关系失效
+```bash
+cp -R security-skills/02-web-and-api-security/* ~/.codex/skills/
+```
 
-## 公开上传前建议
+Restart Codex after adding skills so the skill index is refreshed.
 
-- 先看 [PUBLISH_CHECKLIST.md](PUBLISH_CHECKLIST.md)
-- 再看 [NOTICE.md](NOTICE.md)
-- 最后确认每个 skill 目录里是否还包含你不想公开的组织内信息、私有路径或内部流程
+## Quick Examples
 
-## 来源说明
+Run the Android static privacy collector:
 
-本仓库同时包含：
+```bash
+security-skills/03-privacy-and-compliance/android-privacy-compliance-audit/scripts/android_static_privacy_scan.sh /path/to/app.apk
+```
 
-- 你的自定义 security skills
-- 基于 Trail of Bits `building-secure-contracts` 与 `entry-point-analyzer` 改编后的 Codex 适配 skills
+Review a Kubernetes service account from inside an authorized Pod:
 
-涉及第三方改编来源的目录请保留其 attribution，并在公开发布前再次确认许可证和分发边界。
+```bash
+security-skills/05-container-and-kubernetes-security/kubernetes-privesc-review/scripts/sa_self_rules_review.sh
+```
+
+Build a sensitive-code ownership map:
+
+```bash
+python3 security-skills/04-security-engineering-and-governance/security-ownership-map/scripts/run_ownership_map.py \
+  --repo /path/to/repo \
+  --out /tmp/security-ownership
+```
+
+Run a scope-gated external baseline:
+
+```bash
+security-skills/02-web-and-api-security/pentest-automation-safe/scripts/run_authorized_baseline.sh \
+  --mode baseline \
+  --target example.com \
+  --scope-file /path/to/scope.txt
+```
+
+## Design Rules
+
+Skills in this collection should:
+
+- stay inside authorized testing, review, or compliance work;
+- say when evidence is missing;
+- avoid invented tool capabilities;
+- prefer reproducible scripts and saved outputs;
+- keep destructive actions out of default paths;
+- refuse forged screenshots, fake audit trails, and false compliance language.
+
+## Before Publishing Publicly
+
+Read [PUBLISH_CHECKLIST.md](PUBLISH_CHECKLIST.md) and [NOTICE.md](NOTICE.md). Some folders include adapted third-party material or per-skill license notes, so do not assume a single repository-wide license covers every file.
+
+Suggested repository topics:
+
+```text
+codex, skills, security, smart-contract-security, api-security,
+privacy-compliance, kubernetes-security, container-security, web3
+```
+
+Contributions are welcome when they make a workflow more verifiable, safer to run, or easier to hand to another reviewer.

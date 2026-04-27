@@ -21,3 +21,9 @@
 
 - `security-best-practices`
 - `security-ownership-map`
+
+## 05 Container and Kubernetes Security
+
+- `container-escape-review`
+- `container-foothold-recon`
+- `kubernetes-privesc-review`
